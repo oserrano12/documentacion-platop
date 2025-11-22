@@ -13,7 +13,7 @@
 
 ## 🚀 Demo en Vivo
 
-**🌐 [Ver sitio desplegado en Vercel]([https://platop-reservas.vercel.app](https://documentacion-platop.vercel.app/)**
+**🌐 [Ver sitio desplegado en Vercel]([https://platop-reservas.vercel.app]https://documentacion-platop.vercel.app/)**
 
 ## ✨ Características Principales
 
