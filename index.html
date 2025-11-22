@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLATOP - Sistema de Reservas de Restaurantes - UTS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header con identidad UTS -->
+        <header>
+            <div class="uts-header">
+                <div class="uts-logo">
+                    <img src="media/Logo_de_las_Unidades_Tecnológicas_de_Santander.svg.png" 
+                        alt="Unidades Tecnológicas de Santander" 
+                        class="uts-logo-img">
+                </div>
+                <div class="uts-title">
+                    <h1>UNIDADES TECNOLÓGICAS DE SANTANDER</h1>
+                    <p>Facultad de Ciencias Naturales e Ingenierías</p>
+                    <p>Tecnología en Desarrollo de Sistemas Informáticos</p>
+                </div>
+            </div>
+            
+            <div class="project-logo">
+                <div class="logo-icon">🍽️</div>
+                <div>
+                    <h1>PLATOP</h1>
+                    <div class="subtitle">Sistema de Reservas de Restaurantes</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Información del proyecto -->
+        <div class="project-info">
+            <div class="info-item">
+                <strong>Proyecto Integrador:</strong> Fundamentos de Programación Orientada a Objetos
+            </div>
+            <div class="info-item">
+                <strong>Docente:</strong> Ing. Leydi Johana Polo Amador
+            </div>
+            <div class="info-item">
+                <strong>Semestre:</strong> 2025-2 - Bucaramanga
+            </div>
+        </div>
+
+        <nav>
+            <div class="nav-links">
+                <a href="#introduccion">Introducción</a>
+                <a href="#arquitectura">Arquitectura</a>
+                <a href="#componentes">Componentes</a>
+                <a href="#metodos">Métodos</a>
+                <a href="#flujo">Flujo de Trabajo</a>
+                <a href="#equipo">Equipo</a>
+            </div>
+        </nav>
+
+        <section id="introduccion" class="info-card">
+            <h3>📋 Introducción al Proyecto</h3>
+            <p>PLATOP es un sistema de gestión de reservas para restaurantes desarrollado en Java utilizando programación orientada a objetos y la librería Swing para la interfaz gráfica. El sistema permite gestionar reservas de manera eficiente, calcular costos y exportar datos.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h4>Gestión de Clientes</h4>
+                    <p>Registro y consulta de información de clientes</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📅</div>
+                    <h4>Reservas</h4>
+                    <p>Gestión completa de reservas y horarios</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💰</div>
+                    <h4>Cálculo de Costos</h4>
+                    <p>Cálculo automático con promociones</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h4>Exportación</h4>
+                    <p>Exportación de datos a formato CSV</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="arquitectura" class="info-card">
+            <h3>🏗️ Arquitectura del Sistema</h3>
+            <p>El sistema está construido utilizando los principios de Programación Orientada a Objetos:</p>
+            
+            <div class="architecture-grid">
+                <div class="arch-item">
+                    <h4>Encapsulamiento</h4>
+                    <p>Todos los componentes y datos están encapsulados en la clase FormularioPlatop</p>
+                </div>
+                <div class="arch-item">
+                    <h4>Herencia</h4>
+                    <p>La clase principal hereda de JFrame para reutilizar funcionalidad</p>
+                </div>
+                <div class="arch-item">
+                    <h4>Manejo de Eventos</h4>
+                    <p>Sistema responsivo mediante ActionListener y eventos</p>
+                </div>
+            </div>
+            
+            <div class="code-section">
+                <h3>Estructura Principal de la Clase</h3>
+                <pre><code>public class FormularioPlatop extends JFrame {
+    // Componentes de la interfaz
+    private JTextField txtCliente, txtTelefono;
+    private JComboBox&lt;String&gt; cbRestaurante, cbFecha, cbHora, cbMesa;
+    private JSpinner spPersonas;
+    private JCheckBox chkPromo;
+    private JRadioButton rbEfectivo, rbTarjeta;
+    private JTextArea taObs;
+    private JTable tabla;
+    private DefaultTableModel modeloTabla;
+    private JButton btnAgregar, btnExportar, btnConsultar, btnCalcular, btnVista;
+    
+    public FormularioPlatop() {
+        // Constructor que inicializa la interfaz
+        setTitle("PLATOP - Sistema de Reservas de Restaurantes");
+        setSize(1000, 600);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        // ... más configuración
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="componentes" class="info-card">
+            <h3>⚙️ Componentes de la Interfaz</h3>
+            
+            <div class="components-grid">
+                <div class="component">
+                    <h4>🖼️ Ventana Principal</h4>
+                    <p><strong>JFrame</strong> con título "PLATOP - Sistema de Reservas de Restaurantes", tamaño 1000x600 píxeles, centrada en pantalla.</p>
+                </div>
+                
+                <div class="component">
+                    <h4>📝 Campos de Texto</h4>
+                    <p><strong>JTextField</strong> para nombre del cliente y teléfono. <strong>JTextArea</strong> para observaciones con JScrollPane.</p>
+                </div>
+                
+                <div class="component">
+                    <h4>📋 Listas Desplegables</h4>
+                    <p><strong>JComboBox</strong> para restaurantes, fechas, horas y tipos de mesa con opciones predefinidas.</p>
+                </div>
+                
+                <div class="component">
+                    <h4>🔢 Control Numérico</h4>
+                    <p><strong>JSpinner</strong> para número de personas (1-20), valor por defecto: 2 personas.</p>
+                </div>
+                
+                <div class="component">
+                    <h4>✅ Casillas de Verificación</h4>
+                    <p><strong>JCheckBox</strong> para promociones y <strong>JRadioButton</strong> para métodos de pago (Efectivo/Tarjeta).</p>
+                </div>
+                
+                <div class="component">
+                    <h4>📊 Tabla de Datos</h4>
+                    <p><strong>JTable</strong> con <strong>DefaultTableModel</strong> para mostrar reservas existentes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="metodos" class="info-card">
+            <h3>🔧 Métodos Principales</h3>
+            
+            <div class="methods-container">
+                <div class="method-card">
+                    <h4>consultarCliente()</h4>
+                    <div class="code-block">
+                        <pre><code>private void consultarCliente() {
+    String nombre = JOptionPane.showInputDialog(this, 
+        "Ingrese el nombre del cliente:");
+    if (nombre != null && !nombre.trim().isEmpty()) {
+        txtCliente.setText(nombre);
+        JOptionPane.showMessageDialog(this, 
+            "Cliente registrado: " + nombre);
+    }
+}</code></pre>
+                    </div>
+                    <p><strong>Propósito:</strong> Busca y registra clientes mediante cuadros de diálogo.</p>
+                </div>
+                
+                <div class="method-card">
+                    <h4>calcularCosto()</h4>
+                    <div class="code-block">
+                        <pre><code>private void calcularCosto() {
+    int personas = (Integer) spPersonas.getValue();
+    double costoBase = 50000;
+    double subtotal = personas * costoBase;
+    if (chkPromo.isSelected()) subtotal *= 0.9;
+    JOptionPane.showMessageDialog(this,
+        "Costo estimado de la reserva: $" + subtotal);
+}</code></pre>
+                    </div>
+                    <p><strong>Propósito:</strong> Calcula costo total aplicando 10% de descuento por promoción.</p>
+                </div>
+                
+                <div class="method-card">
+                    <h4>agregarReserva()</h4>
+                    <div class="code-block">
+                        <pre><code>private void agregarReserva() {
+    String cliente = txtCliente.getText();
+    String tel = txtTelefono.getText();
+    String restaurante = (String) cbRestaurante.getSelectedItem();
+    String fecha = (String) cbFecha.getSelectedItem();
+    String hora = (String) cbHora.getSelectedItem();
+    int personas = (Integer) spPersonas.getValue();
+    String mesa = (String) cbMesa.getSelectedItem();
+    String promo = chkPromo.isSelected() ? "Sí" : "No";
+    String pago = rbEfectivo.isSelected() ? "Efectivo" : 
+                rbTarjeta.isSelected() ? "Tarjeta" : "-";
+    double costo = personas * 50000;
+    if (chkPromo.isSelected()) costo *= 0.9;
+    
+    modeloTabla.addRow(new Object[]{cliente, tel, 
+        restaurante, fecha, hora, personas, mesa, promo, pago, costo});
+}</code></pre>
+                    </div>
+                    <p><strong>Propósito:</strong> Agrega nueva reserva a la tabla con todos los datos recopilados.</p>
+                </div>
+
+                <div class="method-card">
+                    <h4>exportarCSV()</h4>
+                    <div class="code-block">
+                        <pre><code>private void exportarCSV() {
+    JFileChooser chooser = new JFileChooser();
+    chooser.setSelectedFile(new File("reservas_PLATOP.csv"));
+    if (chooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+        File archivo = chooser.getSelectedFile();
+        try (PrintWriter pw = new PrintWriter(archivo)) {
+            // Escribe encabezados y datos en formato CSV
+            for (int i = 0; i < modeloTabla.getColumnCount(); i++) {
+                pw.print(modeloTabla.getColumnName(i));
+                if (i < modeloTabla.getColumnCount() - 1) pw.print(",");
+            }
+            pw.println();
+            // ... proceso de escritura de datos
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Error al exportar archivo: " + e.getMessage());
+        }
+    }
+}</code></pre>
+                    </div>
+                    <p><strong>Propósito:</strong> Exporta todas las reservas a archivo CSV para backup y análisis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="flujo" class="info-card">
+            <h3>🔄 Flujo de Trabajo</h3>
+            <div class="workflow">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Consulta del Cliente</h4>
+                        <p>El usuario ingresa o consulta los datos del cliente</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Selección de Parámetros</h4>
+                        <p>Se elige restaurante, fecha, hora, número de personas y tipo de mesa</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Cálculo de Costo</h4>
+                        <p>El sistema calcula automáticamente el costo considerando promociones</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Confirmación de Reserva</h4>
+                        <p>Se agrega la reserva a la tabla principal del sistema</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Exportación (Opcional)</h4>
+                        <p>Las reservas pueden exportarse a CSV para reporting</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equipo" class="info-card">
+            <h3>👥 Información del Equipo</h3>
+            
+            <div class="uts-badge">
+                <div class="uts-badge-logo">
+                    <img src="media/Logo_de_las_Unidades_Tecnológicas_de_Santander.svg.png" 
+                        alt="UTS" 
+                        class="uts-badge-img">
+                </div>
+                <div class="uts-badge-text">
+                    <strong>UNIDADES TECNOLÓGICAS DE SANTANDER</strong>
+                    <span>Tecnología en Desarrollo de Sistemas Informáticos</span>
+                </div>
+            </div>
+            
+            <div class="teacher-section">
+                <h4>👩‍🏫 Docente</h4>
+                <div class="teacher-card">
+                    <strong>Ingeniera Leydi Johana Polo Amador</strong>
+                    <p>Fundamentos de Programación Orientada a Objetos</p>
+                    <p>Proyecto Integrador - 2025-2</p>
+                </div>
+            </div>
+            
+            <h4>Integrantes del Equipo:</h4>
+            <div class="team-members">
+                <div class="member-card">
+                    <div class="member-avatar" style="background: #0B4A75;">DJ</div>
+                    <div class="member-info">
+                        <strong>Danna Jisseth Bohorquez</strong>
+                        <p>TI 1100956711</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar" style="background: #0B4A75;">KR</div>
+                    <div class="member-info">
+                        <strong>Kevin Daniel Rueda Perez</strong>
+                        <p>CC 1097496106</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar" style="background: #0B4A75;">OS</div>
+                    <div class="member-info">
+                        <strong>Oscar Steven Serrano Jaimes</strong>
+                        <p>CC 1097489776</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-avatar" style="background: #0B4A75;">AR</div>
+                    <div class="member-info">
+                        <strong>Andres Santiago Rodriguez Camacho</strong>
+                        <p>CC 1096538623</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="uts-footer-logo">
+                <img src="media/Logo_de_las_Unidades_Tecnológicas_de_Santander.svg.png" 
+                    alt="UTS" 
+                    class="uts-footer-img">
+            </div>
+            <div class="footer-text">
+                <p><strong>PLATOP - Sistema de Reservas de Restaurantes</strong></p>
+                <p>Proyecto Integrador - Programación Orientada a Objetos</p>
+                <p>Unidades Tecnológicas de Santander © 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
